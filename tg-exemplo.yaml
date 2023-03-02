@@ -1,0 +1,45 @@
+apiVersion: elbv2.k8s.aws/v1beta1
+kind: TargetGroupBinding
+metadata:
+  creationTimestamp: "2023-03-01T19:01:46Z"
+  finalizers:
+  - elbv2.k8s.aws/resources
+  generation: 1
+  labels:
+    service.k8s.aws/stack-name: ingress-nginx-controller
+    service.k8s.aws/stack-namespace: kube-system
+  name: k8s-kubesyst-ingressn-67cb652cc3
+  namespace: kube-system
+  resourceVersion: "75310"
+  uid: 1c2a45ce-addb-4102-8eb8-24428d13efeb
+spec:
+  ipAddressType: ipv4
+  networking:
+    ingress:
+    - from:
+      - ipBlock:
+          cidr: 172.16.3.0/24
+      - ipBlock:
+          cidr: 172.16.1.0/24
+      - ipBlock:
+          cidr: 172.16.2.0/24
+      ports:
+      - port: http
+        protocol: TCP
+    - from:
+      - ipBlock:
+          cidr: 172.16.3.0/24
+      - ipBlock:
+          cidr: 172.16.1.0/24
+      - ipBlock:
+          cidr: 172.16.2.0/24
+      ports:
+      - port: 10254
+        protocol: TCP
+  serviceRef:
+    name: ingress-nginx-controller
+    port: 80
+  targetGroupARN: arn:aws:elasticloadbalancing:us-east-2:231979338870:targetgroup/k8s-kubesyst-ingressn-67cb652cc3/a3e7777d76fac7fb
+  targetType: ip
+status:
+  observedGeneration: 1
